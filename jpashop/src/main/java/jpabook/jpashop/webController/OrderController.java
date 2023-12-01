@@ -1,4 +1,4 @@
-package jpabook.jpashop.web;
+package jpabook.jpashop.webController;
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.domain.Order;
 import jpabook.jpashop.domain.OrderSearch;

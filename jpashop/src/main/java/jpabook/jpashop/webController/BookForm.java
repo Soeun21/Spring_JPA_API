@@ -1,4 +1,4 @@
-package jpabook.jpashop.web;
+package jpabook.jpashop.webController;
 import lombok.Getter;
 import lombok.Setter;
 @Getter @Setter

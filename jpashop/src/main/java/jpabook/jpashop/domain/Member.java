@@ -1,9 +1,11 @@
 package jpabook.jpashop.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,11 +22,14 @@ public class Member {
     @Column(name = "member_id")//
     private Long id;
 
+
     private String  name;
 
     @Embedded
     private Address address;
 
+    
+    @JsonIgnore // api검색시 순수 회원정보만 나올 수 있게 안보이게 한다 하지만 다른 api에서 사용해야 할경우 쓸 수없음
     @OneToMany(mappedBy = "member") // 양방향 맵핑 . 잘 사용안하지만 예시로 만듬
     private List<Order> orders = new ArrayList<>();
     // 컬렉션은 생성할 때 만들어 두고 그 후엔 변경하지 않는다.

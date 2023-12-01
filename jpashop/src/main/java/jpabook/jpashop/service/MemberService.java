@@ -56,4 +56,9 @@ public class MemberService {
         return memberRepository.fineOne(meberid);
     }
 
+    @Transactional
+    public void update(Long id, String name) {
+        Member member = memberRepository.fineOne(id);
+        member.setName(name);
+    }
 }

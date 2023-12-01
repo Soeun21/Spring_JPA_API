@@ -1,4 +1,4 @@
-package jpabook.jpashop.web;
+package jpabook.jpashop.webController;
 
 import jpabook.jpashop.domain.Address;
 import jpabook.jpashop.domain.Member;
@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
