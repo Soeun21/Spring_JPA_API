@@ -109,10 +109,34 @@ public class OrderRepository {
     }
 
 
+    public List<Order> findAllWithItem() {
+        return  em.createQuery("select distinct  o from Order o" +
+                " join fetch o.member m" +
+                 " join fetch o.delivery d" +
+                " join fetch o.orderItems oi" +
+                " join fetch oi.item i",Order.class)
+                .getResultList();
+    }
+    /*distinct : JPA의 distinct는 SQL에 distinct를 추가하고, 더해서 같은 엔티티가 조회되면,
+    애플리케이션에서 중복을 걸러준다.
+    order가 컬렉션 페치 조인 때문에 중복 조회 되는 것을 막아준다.
+    ex주문번호 4번에 아이템이 3개 있을경우 3개 주문번호가 3개가 출력되는걸 막아준다
+    단, 페이징 불가능
+    */
+/*컬렉션 페치 조인을 사용하면 페이징이 불가능하다*/
 
 
+    public List<Order> findAllWithMemberDelivery(int offset, int limit){
+        return em.createQuery("select o from Order o" +
+                " join fetch o.member m" +
+                " join fetch o.delivery d", Order.class)
+                .setFirstResult(offset)
+                .setMaxResults(limit)
+                .getResultList();
+    }
 
 
 }
+
 
 

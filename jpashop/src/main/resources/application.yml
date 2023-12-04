@@ -16,6 +16,8 @@ spring:
       hibernate:
 #        show_sql: true # System.out에 하이버네이트 실행 SQL을 남긴다
         format_sql: true
+        default_batch_fetch_size: 100
+#        개별로 설정하려면 @BatchSize 를 적용하면 된다. (컬렉션은 컬렉션 필드에, 엔티티는 엔티티 클래스에 적용)
 
 logging:
   level:
